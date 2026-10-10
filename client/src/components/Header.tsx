@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { content } from '../lib/content';
+import { STATIC_MODE } from '../lib/api';
 import { useAuth } from '../context/AuthContext';
 import LogoMark from './LogoMark';
 
@@ -11,6 +12,9 @@ export default function Header() {
   // landing interface, Explore roles covers /roles and its detail pages.
   const isActive = (path: string) =>
     path === '/' ? pathname === '/' : pathname === path || pathname.startsWith(`${path}/`);
+
+  // The static build has no API, so account-related entries stay hidden.
+  const navItems = content.nav.filter((item) => !(STATIC_MODE && item.path === '/profile'));
 
   return (
     <header className="sticky top-0 z-40 border-b border-black/10 bg-cream/90 backdrop-blur-sm">
@@ -24,7 +28,7 @@ export default function Header() {
         </Link>
 
         <nav className="hidden h-full items-stretch gap-8 md:flex" aria-label="Main">
-          {content.nav.map((item) => (
+          {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
@@ -40,46 +44,48 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          {user ? (
-            <>
-              <Link
-                to="/profile"
-                className="hidden max-w-[180px] truncate text-[14px] font-medium text-fern hover:text-ink sm:block"
-                title={user.email}
-              >
-                {user.name}
-              </Link>
-              <button
-                type="button"
-                onClick={signOut}
-                className="rounded-lg border border-black/10 px-3.5 py-2 text-[14px] font-semibold text-ink transition hover:bg-black/5"
-              >
-                {content.actions.signOut}
-              </button>
-            </>
-          ) : (
-            <>
-              <Link
-                to="/signin"
-                className="px-1 text-[15px] font-medium text-ink transition hover:opacity-70"
-              >
-                {content.actions.signIn}
-              </Link>
-              <Link
-                to="/signup"
-                className="rounded-lg bg-forest px-4 py-2.5 text-[14px] font-semibold text-white transition hover:bg-forest-deep"
-              >
-                {content.actions.createAccount}
-              </Link>
-            </>
-          )}
-        </div>
+        {!STATIC_MODE && (
+          <div className="flex items-center gap-3">
+            {user ? (
+              <>
+                <Link
+                  to="/profile"
+                  className="hidden max-w-[180px] truncate text-[14px] font-medium text-fern hover:text-ink sm:block"
+                  title={user.email}
+                >
+                  {user.name}
+                </Link>
+                <button
+                  type="button"
+                  onClick={signOut}
+                  className="rounded-lg border border-black/10 px-3.5 py-2 text-[14px] font-semibold text-ink transition hover:bg-black/5"
+                >
+                  {content.actions.signOut}
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/signin"
+                  className="px-1 text-[15px] font-medium text-ink transition hover:opacity-70"
+                >
+                  {content.actions.signIn}
+                </Link>
+                <Link
+                  to="/signup"
+                  className="rounded-lg bg-forest px-4 py-2.5 text-[14px] font-semibold text-white transition hover:bg-forest-deep"
+                >
+                  {content.actions.createAccount}
+                </Link>
+              </>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Mobile nav row */}
       <nav className="flex items-stretch gap-6 border-t border-black/5 px-5 sm:px-6 md:hidden" aria-label="Mobile">
-        {content.nav.map((item) => (
+        {navItems.map((item) => (
           <Link
             key={item.path}
             to={item.path}

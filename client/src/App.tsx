@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
+import { STATIC_MODE } from './lib/api';
 import HomePage from './pages/HomePage';
 import ProfilePage from './pages/ProfilePage';
 import RoleDetailPage from './pages/RoleDetailPage';
@@ -13,9 +14,20 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/roles" element={<RolesPage />} />
         <Route path="/roles/:slug" element={<RoleDetailPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/signin" element={<SignInPage />} />
-        <Route path="/signup" element={<SignInPage initialMode="signup" />} />
+        {/* Accounts need the API: the static build keeps everything else. */}
+        {STATIC_MODE ? (
+          <>
+            <Route path="/profile" element={<Navigate to="/" replace />} />
+            <Route path="/signin" element={<Navigate to="/" replace />} />
+            <Route path="/signup" element={<Navigate to="/" replace />} />
+          </>
+        ) : (
+          <>
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/signin" element={<SignInPage />} />
+            <Route path="/signup" element={<SignInPage initialMode="signup" />} />
+          </>
+        )}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>

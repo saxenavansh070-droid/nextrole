@@ -35,13 +35,23 @@ async function main(): Promise<void> {
   const clientDist = path.resolve(__dirname, '..', '..', 'client', 'dist');
   const clientIndex = path.join(clientDist, 'index.html');
   if (fs.existsSync(clientIndex)) {
-    app.use(express.static(clientDist));
+    app.use(
+      express.static(clientDist, {
+        setHeaders: (res, filePath) => {
+          // The app shell must never be cached - stale copies break routing
+          // (e.g. an old bundle without the /signup page). Hashed assets are
+          // immutable, so they can stay cacheable.
+          if (filePath.endsWith('.html')) res.setHeader('Cache-Control', 'no-store');
+        },
+      }),
+    );
     // Single-page-app fallback: any non-API GET returns the client shell.
     app.get('*', (req, res, next) => {
       if (req.path.startsWith('/api')) {
         next();
         return;
       }
+      res.setHeader('Cache-Control', 'no-store');
       res.sendFile(clientIndex);
     });
   }

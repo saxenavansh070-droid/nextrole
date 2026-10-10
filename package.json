@@ -26,7 +26,8 @@
     "productName": "Next Role",
     "asar": false,
     "directories": {
-      "output": "release"
+      "output": "release",
+      "buildResources": "build"
     },
     "files": [
       "electron/**",
@@ -36,6 +37,7 @@
       "nextrole.json",
       "package.json"
     ],
+    "icon": "build/icon.png",
     "win": {
       "target": "dir"
     }

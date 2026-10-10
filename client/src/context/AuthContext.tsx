@@ -1,5 +1,12 @@
-import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react';
-import { getStoredUser, getToken, googleSignIn, localSignIn, setSession } from '../lib/api';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import {
+  getStoredUser,
+  getToken,
+  googleSignIn,
+  localSignIn,
+  setSession,
+  validateSession,
+} from '../lib/api';
 import type { AuthUser } from '../types';
 
 type AuthContextValue = {
@@ -20,6 +27,23 @@ const AuthContext = createContext<AuthContextValue | null>(null);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(() => getStoredUser());
   const [token, setToken] = useState<string | null>(() => getToken());
+
+  // A stored session can go stale (expired secret, cleared store): silently
+  // drop it when the server rejects it so Sign in / Create account come back.
+  useEffect(() => {
+    if (!token) return;
+    let cancelled = false;
+    validateSession().then((ok) => {
+      if (!ok && !cancelled) {
+        setSession(null, null);
+        setToken(null);
+        setUser(null);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [token]);
 
   const signInWithGoogle = useCallback(async (credential: string) => {
     const session = await googleSignIn(credential);
