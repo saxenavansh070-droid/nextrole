@@ -5,6 +5,7 @@ import {
   googleSignIn,
   localSignIn,
   setSession,
+  STATIC_MODE,
   validateSession,
 } from '../lib/api';
 import type { AuthUser } from '../types';
@@ -30,8 +31,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // A stored session can go stale (expired secret, cleared store): silently
   // drop it when the server rejects it so Sign in / Create account come back.
+  // Browser-local sessions (static build) cannot go stale - skip the check.
   useEffect(() => {
-    if (!token) return;
+    if (!token || STATIC_MODE) return;
     let cancelled = false;
     validateSession().then((ok) => {
       if (!ok && !cancelled) {

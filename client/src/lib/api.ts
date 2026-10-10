@@ -1,4 +1,11 @@
 import type { AnalyzeResponse, AnalyzeResult, AuthUser, LibraryRole, SavedAnalysis } from '../types';
+import {
+  deleteLocalAnalysis,
+  listLocalAnalyses,
+  localSignin as browserSignin,
+  localSignup as browserSignup,
+  saveLocalAnalysis,
+} from './localAuth';
 
 const API_BASE = (import.meta.env.VITE_API_URL as string | undefined) ?? '/api';
 
@@ -46,7 +53,10 @@ async function unwrap<T>(res: Response): Promise<T> {
 export async function analyzeFile(file: File): Promise<AnalyzeResponse> {
   if (STATIC_MODE) {
     const { analyzeInBrowser } = await import('./staticAnalyze');
-    return analyzeInBrowser(file);
+    const result = await analyzeInBrowser(file);
+    // Keep profile history for signed-in local accounts.
+    result.saved = saveLocalAnalysis(result);
+    return result;
   }
   const res = await fetch(`${API_BASE}/analyze`, {
     method: 'POST',
@@ -64,7 +74,9 @@ export async function analyzeFile(file: File): Promise<AnalyzeResponse> {
 export async function analyzeText(text: string): Promise<AnalyzeResponse> {
   if (STATIC_MODE) {
     const { analyzeInBrowser } = await import('./staticAnalyze');
-    return analyzeInBrowser(text);
+    const result = await analyzeInBrowser(text);
+    result.saved = saveLocalAnalysis(result);
+    return result;
   }
   const res = await fetch(`${API_BASE}/analyze`, {
     method: 'POST',
@@ -93,6 +105,12 @@ export async function localSignIn(input: {
   email: string;
   password: string;
 }): Promise<{ token: string; user: AuthUser }> {
+  // Static build: secure salted-hash accounts kept in this browser.
+  if (STATIC_MODE) {
+    return input.mode === 'signup'
+      ? browserSignup({ name: input.name ?? '', email: input.email, password: input.password })
+      : browserSignin({ email: input.email, password: input.password });
+  }
   const res = await fetch(`${API_BASE}/auth/local`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -131,6 +149,11 @@ export async function fetchLibraryRoles(): Promise<{ roles: LibraryRole[] }> {
 }
 
 export async function fetchProfile(): Promise<{ analyses: SavedAnalysis[]; count: number }> {
+  if (STATIC_MODE) {
+    const user = getStoredUser();
+    const analyses = user ? listLocalAnalyses(user.id) : [];
+    return { analyses, count: analyses.length };
+  }
   const res = await fetch(`${API_BASE}/profile`, { headers: authHeaders() });
   return unwrap<{ analyses: SavedAnalysis[]; count: number }>(res);
 }
@@ -147,6 +170,11 @@ export async function validateSession(): Promise<boolean> {
 }
 
 export async function deleteAnalysis(id: string): Promise<{ ok: boolean }> {
+  if (STATIC_MODE) {
+    const user = getStoredUser();
+    if (user) deleteLocalAnalysis(user.id, id);
+    return { ok: true };
+  }
   const res = await fetch(`${API_BASE}/profile/analysis/${encodeURIComponent(id)}`, {
     method: 'DELETE',
     headers: authHeaders(),

@@ -39,7 +39,14 @@
     ],
     "icon": "build/icon.png",
     "win": {
-      "target": "dir"
+      "target": ["nsis", "dir"]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "artifactName": "NextRole-Setup-${version}.exe",
+      "shortcutName": "Next Role",
+      "deleteAppDataOnUninstall": false
     }
   }
 }

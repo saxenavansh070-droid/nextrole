@@ -1,8 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
+import { Download } from 'lucide-react';
 import { content } from '../lib/content';
 import { STATIC_MODE } from '../lib/api';
 import { useAuth } from '../context/AuthContext';
 import LogoMark from './LogoMark';
+
+// Direct download for the desktop installer (GitHub Release asset).
+const INSTALL_URL =
+  'https://github.com/saxenavansh070-droid/nextrole/releases/download/v1.0.0/NextRole-Setup-1.0.0.exe';
 
 export default function Header() {
   const { user, signOut } = useAuth();
@@ -12,9 +17,6 @@ export default function Header() {
   // landing interface, Explore roles covers /roles and its detail pages.
   const isActive = (path: string) =>
     path === '/' ? pathname === '/' : pathname === path || pathname.startsWith(`${path}/`);
-
-  // The static build has no API, so account-related entries stay hidden.
-  const navItems = content.nav.filter((item) => !(STATIC_MODE && item.path === '/profile'));
 
   return (
     <header className="sticky top-0 z-40 border-b border-black/10 bg-cream/90 backdrop-blur-sm">
@@ -28,7 +30,7 @@ export default function Header() {
         </Link>
 
         <nav className="hidden h-full items-stretch gap-8 md:flex" aria-label="Main">
-          {navItems.map((item) => (
+          {content.nav.map((item) => (
             <Link
               key={item.path}
               to={item.path}
@@ -44,9 +46,19 @@ export default function Header() {
           ))}
         </nav>
 
-        {!STATIC_MODE && (
-          <div className="flex items-center gap-3">
-            {user ? (
+        <div className="flex items-center gap-3">
+          {/* One-click installer - only meaningful on the hosted web app. */}
+          {STATIC_MODE && (
+            <a
+              href={INSTALL_URL}
+              download=""
+              className="hidden items-center gap-1.5 rounded-lg border border-forest/25 px-3.5 py-2 text-[14px] font-semibold text-forest transition hover:bg-forest hover:text-white sm:flex"
+            >
+              <Download size={15} />
+              {content.actions.installDesktop}
+            </a>
+          )}
+          {user ? (
               <>
                 <Link
                   to="/profile"
@@ -80,12 +92,11 @@ export default function Header() {
               </>
             )}
           </div>
-        )}
       </div>
 
       {/* Mobile nav row */}
       <nav className="flex items-stretch gap-6 border-t border-black/5 px-5 sm:px-6 md:hidden" aria-label="Mobile">
-        {navItems.map((item) => (
+        {content.nav.map((item) => (
           <Link
             key={item.path}
             to={item.path}
