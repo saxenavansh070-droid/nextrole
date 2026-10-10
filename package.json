@@ -1,0 +1,43 @@
+{
+  "name": "nextrole",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Next Role - Find work that fits. Upload a resume, get job roles matched to your skills.",
+  "main": "electron/main.cjs",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "postinstall": "npm install --prefix client && npm install --prefix server",
+    "dev": "concurrently -k -n server,client -c green,cyan \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client && npm run build --prefix server",
+    "typecheck": "npm run typecheck --prefix client && npm run typecheck --prefix server",
+    "start": "npm run start --prefix server",
+    "desktop": "electron .",
+    "package:win": "electron-builder --win dir"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "electron": "^44.7.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.nextrole.desktop",
+    "productName": "Next Role",
+    "asar": false,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "electron/**",
+      "server/dist/**",
+      "server/node_modules/**",
+      "client/dist/**",
+      "nextrole.json",
+      "package.json"
+    ],
+    "win": {
+      "target": "dir"
+    }
+  }
+}

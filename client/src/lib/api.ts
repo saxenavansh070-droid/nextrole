@@ -1,0 +1,132 @@
+import type { AnalyzeResponse, AnalyzeResult, AuthUser, LibraryRole, SavedAnalysis } from '../types';
+
+const API_BASE = (import.meta.env.VITE_API_URL as string | undefined) ?? '/api';
+
+const TOKEN_KEY = 'nextrole.token';
+const USER_KEY = 'nextrole.user';
+
+export function getToken(): string | null {
+  return localStorage.getItem(TOKEN_KEY);
+}
+
+export function getStoredUser(): AuthUser | null {
+  const raw = localStorage.getItem(USER_KEY);
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw) as AuthUser;
+  } catch {
+    return null;
+  }
+}
+
+export function setSession(token: string | null, user: AuthUser | null): void {
+  if (token) localStorage.setItem(TOKEN_KEY, token);
+  else localStorage.removeItem(TOKEN_KEY);
+  if (user) localStorage.setItem(USER_KEY, JSON.stringify(user));
+  else localStorage.removeItem(USER_KEY);
+}
+
+function authHeaders(): Record<string, string> {
+  const token = getToken();
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
+async function unwrap<T>(res: Response): Promise<T> {
+  const data = (await res.json().catch(() => ({}))) as T & { error?: string };
+  if (!res.ok) {
+    throw new Error(data.error ?? `Request failed with status ${res.status}`);
+  }
+  return data;
+}
+
+/** Upload a resume file (PDF, DOCX, TXT) as raw bytes. */
+export async function analyzeFile(file: File): Promise<AnalyzeResponse> {
+  const res = await fetch(`${API_BASE}/analyze`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/octet-stream',
+      'X-Filename': encodeURIComponent(file.name),
+      ...authHeaders(),
+    },
+    body: file,
+  });
+  return unwrap<AnalyzeResponse>(res);
+}
+
+/** Analyse pasted resume text. */
+export async function analyzeText(text: string): Promise<AnalyzeResponse> {
+  const res = await fetch(`${API_BASE}/analyze`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...authHeaders(),
+    },
+    body: JSON.stringify({ text }),
+  });
+  return unwrap<AnalyzeResponse>(res);
+}
+
+export async function googleSignIn(credential: string): Promise<{ token: string; user: AuthUser }> {
+  const res = await fetch(`${API_BASE}/auth/google`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ credential }),
+  });
+  return unwrap<{ token: string; user: AuthUser }>(res);
+}
+
+/** Password sign-in / sign-up with email (works with no external setup). */
+export async function localSignIn(input: {
+  mode: 'signin' | 'signup';
+  name?: string;
+  email: string;
+  password: string;
+}): Promise<{ token: string; user: AuthUser }> {
+  const res = await fetch(`${API_BASE}/auth/local`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(input),
+  });
+  return unwrap<{ token: string; user: AuthUser }>(res);
+}
+
+const LAST_RESULT_KEY = 'nextrole.lastResult';
+
+export type LastResult = AnalyzeResult & { fileName?: string };
+
+/** Most recent analysis on this device (used for role detail matching). */
+export function getLastResult(): LastResult | null {
+  const raw = localStorage.getItem(LAST_RESULT_KEY);
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw) as LastResult;
+  } catch {
+    return null;
+  }
+}
+
+export function setLastResult(result: LastResult): void {
+  try {
+    localStorage.setItem(LAST_RESULT_KEY, JSON.stringify(result));
+  } catch {
+    // Storage full or unavailable - results still render for this visit.
+  }
+}
+
+export async function fetchLibraryRoles(): Promise<{ roles: LibraryRole[] }> {
+  const res = await fetch(`${API_BASE}/roles`);
+  return unwrap<{ roles: LibraryRole[] }>(res);
+}
+
+export async function fetchProfile(): Promise<{ analyses: SavedAnalysis[]; count: number }> {
+  const res = await fetch(`${API_BASE}/profile`, { headers: authHeaders() });
+  return unwrap<{ analyses: SavedAnalysis[]; count: number }>(res);
+}
+
+export async function deleteAnalysis(id: string): Promise<{ ok: boolean }> {
+  const res = await fetch(`${API_BASE}/profile/analysis/${encodeURIComponent(id)}`, {
+    method: 'DELETE',
+    headers: authHeaders(),
+  });
+  return unwrap<{ ok: boolean }>(res);
+}

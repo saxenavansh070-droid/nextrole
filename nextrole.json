@@ -1,0 +1,986 @@
+{
+  "title": "Next Role - Find work that fits",
+  "brand": {
+    "name": "nextrole",
+    "mark": "N",
+    "tagline": "Find work that fits you."
+  },
+  "nav": [
+    {
+      "label": "Home",
+      "path": "/"
+    },
+    {
+      "label": "Explore roles",
+      "path": "/roles"
+    },
+    {
+      "label": "Your profile",
+      "path": "/profile"
+    }
+  ],
+  "actions": {
+    "signIn": "Sign in",
+    "createAccount": "Create account",
+    "signOut": "Sign out"
+  },
+  "hero": {
+    "eyebrow": "YOUR NEXT CHAPTER, MADE CLEARER",
+    "titleLead": "Find work that ",
+    "titleAccent": "fits you.",
+    "subtitle": "Bring your experience. We will surface roles that make sense for where you have been and where you could go.",
+    "privacyTitle": "Your profile stays yours.",
+    "privacyText": "Matching happens on this device."
+  },
+  "experience": {
+    "step": "1",
+    "label": "START WITH YOU",
+    "title": "Your experience",
+    "description": "Use your LinkedIn profile PDF, or paste the text from your profile.",
+    "tabUpload": "Upload a file",
+    "tabPaste": "Paste text",
+    "browseLead": "or",
+    "browseLink": "browse files",
+    "fileTypes": "PDF, Word document, or plain text, up to 10 MB",
+    "pastePlaceholder": "Paste your resume text, LinkedIn summary, or work history here...",
+    "submit": "Show my roles",
+    "dropHere": "Release to upload your file",
+    "loading": "Reading your experience...",
+    "ready": "Ready to analyse",
+    "errors": {
+      "empty": "Add your resume text or a file first.",
+      "tooShort": "That looks too short. Paste at least a few lines about your experience.",
+      "server": "Something went wrong while reading your resume. Please try again."
+    }
+  },
+  "roles": {
+    "step": "2",
+    "label": "POSSIBLE NEXT MOVES",
+    "title": "Roles for you",
+    "found": "roles found",
+    "notice": "Add your profile to see roles matched to your experience.",
+    "emptyTitle": "Your matches will show up here",
+    "emptyText": "Upload a profile or paste your experience to get started.",
+    "loadingTitle": "Matching roles to your skills...",
+    "skillsLabel": "Skills we found in your resume",
+    "summaryLabel": "Your profile, in one line",
+    "matchSuffix": "% match",
+    "sourceLocal": "Local match - add a Grok API key for deeper AI analysis.",
+    "retry": "Try again"
+  },
+  "pages": {
+    "roles": {
+      "title": "Explore roles",
+      "subtitle": "Every role in the Next Role library, and the skills each one leans on.",
+      "searchPlaceholder": "Search by role or skill...",
+      "countSuffix": "roles in the library",
+      "selectLabel": "Select a role to explore",
+      "selectPlaceholder": "Choose a role to see what it takes...",
+      "viewDetails": "Open full role details",
+      "pickerHint": "Pick any role below to see the skills you need to apply for it.",
+      "resumeSortHint": "Roles that match your resume are shown first - strongest fit at the top."
+    },
+    "profile": {
+      "title": "Your profile",
+      "subtitle": "Your saved matches, in one place.",
+      "historyTitle": "Previous analyses",
+      "emptyTitle": "No saved matches yet.",
+      "emptyText": "Upload your resume on the home page and your matches will appear here.",
+      "signInPrompt": "Sign in to keep your matches across devices.",
+      "analysesFound": "saved analyses",
+      "topRole": "Top match",
+      "deleteOne": "Remove",
+      "openHome": "Analyse a resume"
+    },
+    "signin": {
+      "title": "Sign in",
+      "subtitle": "Keep your matches, skills, and history together across devices.",
+      "note": "We only use your name and email. Your resume text is never shared with anyone else.",
+      "noAccount": "New here? Enter your details below to create your account - it takes seconds.",
+      "or": "or",
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "Email address",
+      "passwordPlaceholder": "Password",
+      "passwordHint": "Use at least 6 characters.",
+      "continue": "Continue",
+      "signinCta": "Sign in",
+      "signupCta": "Sign up",
+      "signupTitle": "Sign up",
+      "signupSubtitle": "Create your account with a name, email and password - it takes seconds.",
+      "toSignup": "New here? Create an account",
+      "toSignin": "Already have an account? Sign in",
+      "localNote": "Your password is stored securely (hashed) and is never shared."
+    },
+    "roleDetail": {
+      "backToRoles": "All roles",
+      "skillsTitle": "Skills you need to apply",
+      "skillsNote": "These are the skills this role leans on most.",
+      "fitTitle": "Your fit for this role",
+      "youHave": "You have",
+      "of": "of",
+      "skillsSuffix": "skills",
+      "uploadPrompt": "Upload your resume and we will show which of these skills you already have.",
+      "matchedSuffix": "% match with your resume",
+      "cta": "Check my resume for this role",
+      "notFound": "That role is not in the library yet.",
+      "notFoundCta": "Back to all roles"
+    }
+  },
+  "footer": {
+    "text": "Your next chapter, made clearer.",
+    "rights": "© 2026 nextrole"
+  },
+  "skillCatalog": [
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "Java",
+    "C++",
+    "C#",
+    "Go",
+    "Rust",
+    "R",
+    "PHP",
+    "Ruby",
+    "Kotlin",
+    "Swift",
+    "HTML",
+    "CSS",
+    "SQL",
+    "GraphQL",
+    "REST APIs",
+    "React",
+    "Next.js",
+    "Vue.js",
+    "Angular",
+    "Node.js",
+    "Express",
+    "Django",
+    "Flask",
+    "Spring Boot",
+    "React Native",
+    "Flutter",
+    "Tailwind CSS",
+    "Bootstrap",
+    "jQuery",
+    "MongoDB",
+    "PostgreSQL",
+    "MySQL",
+    "Redis",
+    "Elasticsearch",
+    "Firebase",
+    "Oracle",
+    "Excel",
+    "Power BI",
+    "Tableau",
+    "Google Sheets",
+    "pandas",
+    "NumPy",
+    "Statistics",
+    "Data Visualization",
+    "ETL",
+    "Data Modeling",
+    "Data Warehousing",
+    "Big Data",
+    "Spark",
+    "Hadoop",
+    "Airflow",
+    "Kafka",
+    "Machine Learning",
+    "Deep Learning",
+    "TensorFlow",
+    "PyTorch",
+    "scikit-learn",
+    "NLP",
+    "Computer Vision",
+    "Prompt Engineering",
+    "AWS",
+    "Azure",
+    "Google Cloud",
+    "Docker",
+    "Kubernetes",
+    "Terraform",
+    "CI/CD",
+    "Jenkins",
+    "GitHub Actions",
+    "Linux",
+    "Nginx",
+    "Monitoring",
+    "Ansible",
+    "Microservices",
+    "Serverless",
+    "Git",
+    "GitHub",
+    "Jira",
+    "Figma",
+    "Sketch",
+    "Canva",
+    "Photoshop",
+    "Illustrator",
+    "Premiere Pro",
+    "After Effects",
+    "Notion",
+    "Slack",
+    "Salesforce",
+    "HubSpot",
+    "SAP",
+    "Microsoft Office",
+    "PowerPoint",
+    "Word",
+    "Agile",
+    "Scrum",
+    "Kanban",
+    "Roadmaps",
+    "Product Strategy",
+    "User Research",
+    "Wireframing",
+    "Prototyping",
+    "Design Systems",
+    "Accessibility",
+    "UI/UX Design",
+    "A/B Testing",
+    "SEO",
+    "Content Marketing",
+    "Email Marketing",
+    "Social Media",
+    "Google Analytics",
+    "Copywriting",
+    "Technical Writing",
+    "Documentation",
+    "Communication",
+    "Leadership",
+    "Mentoring",
+    "Stakeholder Management",
+    "Project Management",
+    "Negotiation",
+    "Customer Success",
+    "Onboarding",
+    "Recruitment",
+    "Payroll",
+    "Financial Modeling",
+    "Forecasting",
+    "Accounting",
+    "Risk Management",
+    "Quality Assurance",
+    "Testing",
+    "Jest",
+    "Selenium",
+    "Cypress",
+    "Playwright",
+    "Unit Testing",
+    "Performance Tuning",
+    "Security",
+    "Networking",
+    "System Design",
+    "Problem Solving",
+    "Analytical Thinking",
+    "Attention to Detail",
+    "Time Management",
+    "Teamwork",
+    "Presentation Skills",
+    "Budget Management",
+    "Vendor Management",
+    "Supply Chain",
+    "Inventory Management",
+    "Customer Support",
+    "Technical Support",
+    "CRM",
+    "Business Analysis",
+    "Requirements Gathering",
+    "Process Improvement",
+    "Change Management",
+    "Business Intelligence",
+    "Budgeting",
+    "Payroll Processing",
+    "Employment Law",
+    "Interviewing"
+  ],
+  "skillRoles": {
+    "React": [
+      "Frontend Engineer",
+      "Full-Stack Developer",
+      "UI/UX Designer"
+    ],
+    "TypeScript": [
+      "Frontend Engineer",
+      "Backend Engineer",
+      "Full-Stack Developer"
+    ],
+    "JavaScript": [
+      "Frontend Engineer",
+      "Full-Stack Developer",
+      "Backend Engineer"
+    ],
+    "HTML": [
+      "Frontend Engineer",
+      "UI/UX Designer",
+      "Technical Writer"
+    ],
+    "CSS": [
+      "Frontend Engineer",
+      "UI/UX Designer"
+    ],
+    "Tailwind CSS": [
+      "Frontend Engineer",
+      "UI/UX Designer"
+    ],
+    "Node.js": [
+      "Backend Engineer",
+      "Full-Stack Developer"
+    ],
+    "Express": [
+      "Backend Engineer",
+      "Full-Stack Developer"
+    ],
+    "MongoDB": [
+      "Backend Engineer",
+      "Full-Stack Developer",
+      "Database Administrator"
+    ],
+    "SQL": [
+      "Data Analyst",
+      "Backend Engineer",
+      "Database Administrator",
+      "Business Analyst"
+    ],
+    "PostgreSQL": [
+      "Backend Engineer",
+      "Database Administrator"
+    ],
+    "MySQL": [
+      "Backend Engineer",
+      "Database Administrator"
+    ],
+    "Python": [
+      "Data Analyst",
+      "Data Scientist",
+      "Backend Engineer",
+      "Machine Learning Engineer"
+    ],
+    "Docker": [
+      "DevOps Engineer",
+      "Backend Engineer",
+      "Cloud Engineer"
+    ],
+    "Kubernetes": [
+      "DevOps Engineer",
+      "Cloud Engineer"
+    ],
+    "AWS": [
+      "Cloud Engineer",
+      "DevOps Engineer",
+      "Machine Learning Engineer"
+    ],
+    "Azure": [
+      "Cloud Engineer",
+      "DevOps Engineer"
+    ],
+    "Git": [
+      "Frontend Engineer",
+      "Backend Engineer",
+      "Full-Stack Developer"
+    ],
+    "Figma": [
+      "UI/UX Designer",
+      "Product Manager"
+    ],
+    "UI/UX Design": [
+      "UI/UX Designer"
+    ],
+    "Photoshop": [
+      "Graphic Designer",
+      "UI/UX Designer"
+    ],
+    "Illustrator": [
+      "Graphic Designer"
+    ],
+    "Premiere Pro": [
+      "Video Editor"
+    ],
+    "Machine Learning": [
+      "Data Scientist",
+      "Machine Learning Engineer"
+    ],
+    "TensorFlow": [
+      "Machine Learning Engineer",
+      "Data Scientist"
+    ],
+    "PyTorch": [
+      "Machine Learning Engineer",
+      "Data Scientist"
+    ],
+    "Statistics": [
+      "Data Analyst",
+      "Data Scientist"
+    ],
+    "Excel": [
+      "Financial Analyst",
+      "Data Analyst",
+      "Operations Manager",
+      "HR Generalist"
+    ],
+    "Power BI": [
+      "Data Analyst",
+      "Business Analyst"
+    ],
+    "Tableau": [
+      "Data Analyst",
+      "Business Analyst"
+    ],
+    "Agile": [
+      "Project Manager",
+      "Product Manager",
+      "Engineering Manager"
+    ],
+    "Scrum": [
+      "Project Manager",
+      "Product Manager"
+    ],
+    "Roadmaps": [
+      "Product Manager",
+      "Engineering Manager"
+    ],
+    "SEO": [
+      "Digital Marketing Specialist",
+      "Content Strategist",
+      "Growth Marketer"
+    ],
+    "Content Marketing": [
+      "Content Strategist",
+      "Digital Marketing Specialist"
+    ],
+    "Copywriting": [
+      "Content Strategist",
+      "Digital Marketing Specialist"
+    ],
+    "Google Analytics": [
+      "Digital Marketing Specialist",
+      "Growth Marketer"
+    ],
+    "CRM": [
+      "Sales Development Representative",
+      "Customer Success Manager",
+      "Recruiter"
+    ],
+    "Salesforce": [
+      "Sales Development Representative",
+      "Customer Success Manager"
+    ],
+    "Communication": [
+      "Project Manager",
+      "Customer Success Manager",
+      "Recruiter",
+      "Technical Writer"
+    ],
+    "Leadership": [
+      "Engineering Manager",
+      "Operations Manager",
+      "Project Manager"
+    ],
+    "Recruitment": [
+      "Recruiter",
+      "HR Generalist"
+    ],
+    "Payroll": [
+      "HR Generalist"
+    ],
+    "Financial Modeling": [
+      "Financial Analyst"
+    ],
+    "Accounting": [
+      "Financial Analyst"
+    ],
+    "Testing": [
+      "QA / Test Automation Engineer",
+      "Full-Stack Developer"
+    ],
+    "Selenium": [
+      "QA / Test Automation Engineer"
+    ],
+    "Jest": [
+      "QA / Test Automation Engineer",
+      "Frontend Engineer"
+    ],
+    "Security": [
+      "Cybersecurity Analyst"
+    ],
+    "Networking": [
+      "Cybersecurity Analyst",
+      "Cloud Engineer"
+    ],
+    "Linux": [
+      "DevOps Engineer",
+      "Cybersecurity Analyst",
+      "Cloud Engineer"
+    ],
+    "React Native": [
+      "Mobile App Developer"
+    ],
+    "Flutter": [
+      "Mobile App Developer"
+    ],
+    "Swift": [
+      "Mobile App Developer"
+    ],
+    "Kotlin": [
+      "Mobile App Developer"
+    ],
+    "Documentation": [
+      "Technical Writer"
+    ],
+    "Technical Writing": [
+      "Technical Writer"
+    ],
+    "Customer Support": [
+      "Customer Success Manager",
+      "Technical Support Specialist"
+    ],
+    "Technical Support": [
+      "Technical Support Specialist",
+      "Customer Success Manager"
+    ],
+    "Supply Chain": [
+      "Operations Manager"
+    ],
+    "Inventory Management": [
+      "Operations Manager"
+    ],
+    "Process Improvement": [
+      "Operations Manager",
+      "Business Analyst"
+    ],
+    "Business Analysis": [
+      "Business Analyst",
+      "Product Manager"
+    ],
+    "Requirements Gathering": [
+      "Business Analyst",
+      "Product Manager"
+    ],
+    "Budget Management": [
+      "Project Manager",
+      "Operations Manager",
+      "HR Generalist"
+    ],
+    "Mentoring": [
+      "Engineering Manager",
+      "Project Manager"
+    ],
+    "Interviewing": [
+      "Recruiter",
+      "HR Generalist"
+    ]
+  },
+  "roleCatalog": [
+    {
+      "title": "Frontend Engineer",
+      "seniority": "Mid–Senior",
+      "summary": "Builds the interfaces people use every day, turning designs and product ideas into fast, accessible web apps.",
+      "skills": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Tailwind CSS",
+        "Git",
+        "Accessibility",
+        "Testing"
+      ]
+    },
+    {
+      "title": "Backend Engineer",
+      "seniority": "Mid–Senior",
+      "summary": "Designs and ships the APIs, services, and data layers that power products behind the scenes.",
+      "skills": [
+        "Node.js",
+        "Express",
+        "TypeScript",
+        "MongoDB",
+        "SQL",
+        "REST APIs",
+        "Docker",
+        "Git",
+        "System Design"
+      ]
+    },
+    {
+      "title": "Full-Stack Developer",
+      "seniority": "Mid–Senior",
+      "summary": "Works across the whole stack, from database schema to polished UI, owning features end to end.",
+      "skills": [
+        "React",
+        "Node.js",
+        "TypeScript",
+        "MongoDB",
+        "REST APIs",
+        "Git",
+        "HTML",
+        "CSS",
+        "Testing"
+      ]
+    },
+    {
+      "title": "UI/UX Designer",
+      "seniority": "Mid",
+      "summary": "Researches, wireframes, and designs product experiences that are simple, consistent, and enjoyable to use.",
+      "skills": [
+        "Figma",
+        "UI/UX Design",
+        "Prototyping",
+        "Wireframing",
+        "Design Systems",
+        "User Research",
+        "Accessibility"
+      ]
+    },
+    {
+      "title": "Product Manager",
+      "seniority": "Mid–Senior",
+      "summary": "Decides what to build and why, balancing user needs, business goals, and engineering reality.",
+      "skills": [
+        "Roadmaps",
+        "Product Strategy",
+        "User Research",
+        "Agile",
+        "Stakeholder Management",
+        "Communication",
+        "A/B Testing"
+      ]
+    },
+    {
+      "title": "Data Analyst",
+      "seniority": "Entry–Mid",
+      "summary": "Turns raw data into clear answers, dashboards, and recommendations that teams act on.",
+      "skills": [
+        "SQL",
+        "Python",
+        "Excel",
+        "Power BI",
+        "Statistics",
+        "Data Visualization",
+        "Analytical Thinking"
+      ]
+    },
+    {
+      "title": "Data Scientist",
+      "seniority": "Mid–Senior",
+      "summary": "Builds models and experiments to predict outcomes and uncover patterns in complex data.",
+      "skills": [
+        "Python",
+        "Machine Learning",
+        "pandas",
+        "Statistics",
+        "SQL",
+        "TensorFlow",
+        "Data Visualization"
+      ]
+    },
+    {
+      "title": "Machine Learning Engineer",
+      "seniority": "Mid–Senior",
+      "summary": "Productionises AI models: training pipelines, evaluation, serving, and monitoring at scale.",
+      "skills": [
+        "Python",
+        "PyTorch",
+        "TensorFlow",
+        "Machine Learning",
+        "Docker",
+        "AWS",
+        "Kubernetes",
+        "MLOps"
+      ]
+    },
+    {
+      "title": "DevOps Engineer",
+      "seniority": "Mid–Senior",
+      "summary": "Keeps delivery fast and reliable with CI/CD, infrastructure as code, and observability.",
+      "skills": [
+        "Docker",
+        "Kubernetes",
+        "CI/CD",
+        "AWS",
+        "Terraform",
+        "Linux",
+        "Monitoring",
+        "Jenkins"
+      ]
+    },
+    {
+      "title": "Cloud Engineer",
+      "seniority": "Mid–Senior",
+      "summary": "Designs and runs cloud infrastructure that is scalable, secure, and cost-aware.",
+      "skills": [
+        "AWS",
+        "Azure",
+        "Google Cloud",
+        "Kubernetes",
+        "Terraform",
+        "Networking",
+        "Linux"
+      ]
+    },
+    {
+      "title": "Mobile App Developer",
+      "seniority": "Mid",
+      "summary": "Builds and ships mobile experiences for iOS and Android, native or cross-platform.",
+      "skills": [
+        "React Native",
+        "Flutter",
+        "Swift",
+        "Kotlin",
+        "JavaScript",
+        "Testing",
+        "Git"
+      ]
+    },
+    {
+      "title": "QA / Test Automation Engineer",
+      "seniority": "Mid",
+      "summary": "Protects product quality with test strategy, automated suites, and careful release checks.",
+      "skills": [
+        "Testing",
+        "Selenium",
+        "Jest",
+        "Cypress",
+        "CI/CD",
+        "Attention to Detail",
+        "Quality Assurance"
+      ]
+    },
+    {
+      "title": "Cybersecurity Analyst",
+      "seniority": "Mid",
+      "summary": "Watches for threats, responds to incidents, and hardens systems and processes.",
+      "skills": [
+        "Security",
+        "Networking",
+        "Linux",
+        "Incident Response",
+        "Risk Management",
+        "Monitoring"
+      ]
+    },
+    {
+      "title": "Database Administrator",
+      "seniority": "Mid–Senior",
+      "summary": "Owns data reliability: schema design, performance tuning, backups, and access control.",
+      "skills": [
+        "SQL",
+        "PostgreSQL",
+        "MySQL",
+        "Performance Tuning",
+        "Backup & Recovery",
+        "Security"
+      ]
+    },
+    {
+      "title": "Engineering Manager",
+      "seniority": "Senior",
+      "summary": "Leads a team of engineers, unblocks delivery, and grows people through feedback and mentoring.",
+      "skills": [
+        "Leadership",
+        "Mentoring",
+        "Agile",
+        "System Design",
+        "Stakeholder Management",
+        "Communication"
+      ]
+    },
+    {
+      "title": "Technical Writer",
+      "seniority": "Mid",
+      "summary": "Makes complex products understandable through docs, guides, and clear examples.",
+      "skills": [
+        "Technical Writing",
+        "Documentation",
+        "HTML",
+        "APIs",
+        "Communication",
+        "Editing"
+      ]
+    },
+    {
+      "title": "Digital Marketing Specialist",
+      "seniority": "Entry–Mid",
+      "summary": "Runs campaigns across search, social, and email, then measures what actually works.",
+      "skills": [
+        "SEO",
+        "Content Marketing",
+        "Google Analytics",
+        "Social Media",
+        "Copywriting",
+        "Email Marketing"
+      ]
+    },
+    {
+      "title": "Content Strategist",
+      "seniority": "Mid",
+      "summary": "Plans what content to create, where it lives, and how it moves people through the funnel.",
+      "skills": [
+        "Content Marketing",
+        "Copywriting",
+        "SEO",
+        "User Research",
+        "Communication",
+        "Google Analytics"
+      ]
+    },
+    {
+      "title": "Growth Marketer",
+      "seniority": "Mid–Senior",
+      "summary": "Runs experiments across the funnel to acquire, activate, and retain more users.",
+      "skills": [
+        "A/B Testing",
+        "Google Analytics",
+        "SEO",
+        "Email Marketing",
+        "Analytics",
+        "Experimentation"
+      ]
+    },
+    {
+      "title": "Sales Development Representative",
+      "seniority": "Entry–Mid",
+      "summary": "Builds pipeline by researching prospects, starting conversations, and qualifying leads.",
+      "skills": [
+        "CRM",
+        "Communication",
+        "Negotiation",
+        "Lead Generation",
+        "Salesforce",
+        "Time Management"
+      ]
+    },
+    {
+      "title": "Customer Success Manager",
+      "seniority": "Mid",
+      "summary": "Helps customers get value from a product, from onboarding to renewal.",
+      "skills": [
+        "Customer Success",
+        "Communication",
+        "CRM",
+        "Onboarding",
+        "Analytics",
+        "Empathy"
+      ]
+    },
+    {
+      "title": "Recruiter / Talent Acquisition",
+      "seniority": "Mid",
+      "summary": "Finds and attracts talent, running sourcing, interviews, and offers end to end.",
+      "skills": [
+        "Recruitment",
+        "Interviewing",
+        "Communication",
+        "CRM",
+        "Employer Branding",
+        "Stakeholder Management"
+      ]
+    },
+    {
+      "title": "Financial Analyst",
+      "seniority": "Mid",
+      "summary": "Analyses performance, builds models, and turns numbers into decisions.",
+      "skills": [
+        "Excel",
+        "Financial Modeling",
+        "Accounting",
+        "Forecasting",
+        "SQL",
+        "Budgeting"
+      ]
+    },
+    {
+      "title": "Project Manager",
+      "seniority": "Mid",
+      "summary": "Keeps scope, schedule, and stakeholders aligned so teams deliver on time.",
+      "skills": [
+        "Agile",
+        "Scrum",
+        "Stakeholder Management",
+        "Risk Management",
+        "Budget Management",
+        "Communication"
+      ]
+    },
+    {
+      "title": "HR Generalist",
+      "seniority": "Entry–Mid",
+      "summary": "Runs the people side of a company: hiring, onboarding, payroll, and policy.",
+      "skills": [
+        "Recruitment",
+        "Payroll",
+        "Onboarding",
+        "Employment Law",
+        "Communication",
+        "HRIS"
+      ]
+    },
+    {
+      "title": "Video Editor",
+      "seniority": "Entry–Mid",
+      "summary": "Shapes raw footage into stories for social, product, and brand channels.",
+      "skills": [
+        "Premiere Pro",
+        "After Effects",
+        "Storytelling",
+        "Color Grading",
+        "Audio",
+        "Creativity"
+      ]
+    },
+    {
+      "title": "Graphic Designer",
+      "seniority": "Entry–Mid",
+      "summary": "Creates visuals that carry a brand across web, print, and social.",
+      "skills": [
+        "Photoshop",
+        "Illustrator",
+        "Branding",
+        "Typography",
+        "Layout Design",
+        "Canva"
+      ]
+    },
+    {
+      "title": "Operations Manager",
+      "seniority": "Mid–Senior",
+      "summary": "Runs the day-to-day engine of a business and keeps improving how work flows.",
+      "skills": [
+        "Process Improvement",
+        "Supply Chain",
+        "Excel",
+        "Leadership",
+        "Analytics",
+        "Budget Management"
+      ]
+    },
+    {
+      "title": "Business Analyst",
+      "seniority": "Mid",
+      "summary": "Bridges business needs and technology by gathering requirements and shaping solutions.",
+      "skills": [
+        "Business Analysis",
+        "Requirements Gathering",
+        "SQL",
+        "Power BI",
+        "Process Improvement",
+        "Communication"
+      ]
+    },
+    {
+      "title": "Technical Support Specialist",
+      "seniority": "Entry–Mid",
+      "summary": "Resolves customer and internal technical issues, and escalates what needs engineering.",
+      "skills": [
+        "Technical Support",
+        "Customer Support",
+        "Linux",
+        "Networking",
+        "Communication",
+        "Problem Solving"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+
+  /* Palette sampled from the Next Role design */
+  --color-cream: #f7f6f1;
+  --color-sand: #f1efe6;
+  --color-bone: #edebe1;
+  --color-forest: #123a2b;
+  --color-forest-deep: #0d2c20;
+  --color-ink: #11372a;
+  --color-clay: #e2603c;
+  --color-clay-deep: #c94e2c;
+  --color-clay-100: #f9ded1;
+  --color-clay-200: #f3c7b3;
+  --color-sage: #9db4a7;
+  --color-moss: #75897d;
+  --color-fern: #64796e;
+  --color-leaf: #cfe3a5;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-cream font-sans text-ink;
+  }
+
+  ::selection {
+    @apply bg-clay-100 text-ink;
+  }
+}
